@@ -1,0 +1,277 @@
+mysql> create database school character set utf8;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> create table card(
+    -> id int primary key auto_increment,
+    -> name varchar(20) not null,
+    -> gender varchar(20) not null,
+    -> addressad varchar(20) not null,
+    -> )engine=MyISAM default charset=utf8;
+ERROR 1046 (3D000): No database selected
+mysql> insert into card value(14011,'蒋','男','大同'),(14022,'孟','女','运城'),(14033,'王','男','忻州');
+ERROR 1046 (3D000): No database selected
+mysql> 
+mysql> use school;
+Database changed
+mysql> create table card(
+    -> id int primary key auto_increment,
+    -> name varchar(20) not null,
+    -> gender varchar(20) not null,
+    -> addressad varchar(20) not null,
+    -> )engine=MyISAM default charset=utf8;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')engine=MyISAM default charset=utf8' at line 6
+mysql> insert into card value(14011,'蒋','男','大同'),(14022,'孟','女','运城'),(14033,'王','男','忻州');
+ERROR 1146 (42S02): Table 'school.card' doesn't exist
+mysql> 
+mysql> create table card(
+    -> id int primary key auto_increment,
+    -> name varchar(20) not null,
+    -> gender varchar(20) not null,
+    -> address varchar(20) not null,
+    -> )engine=MyISAM default charset=utf8;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')engine=MyISAM default charset=utf8' at line 6
+mysql> insert into card value(14011,'蒋','男','大同'),(14022,'孟','女','运城'),(14033,'王','男','忻州');
+ERROR 1146 (42S02): Table 'school.card' doesn't exist
+mysql> create table card(
+    -> id int primary key auto_increment,
+    -> name varchar(20) not null,
+    -> gender varchar(20) not null,
+    -> address varchar(20) not null,
+    -> )engine=MyISAM default charset=utf8;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')engine=MyISAM default charset=utf8' at line 6
+mysql> insert into card values(14011,'蒋','男','大同');
+ERROR 1146 (42S02): Table 'school.card' doesn't exist
+mysql> You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')engine=MyISAM default charset=utf8' at line 6
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'You have an error in your SQL syntax' at line 1
+    -> create table card(
+    -> id int primary key auto_increment,
+    -> name varchar(20) not null,
+    -> gender varchar(20) not null,
+    -> address varchar(20)
+    -> )engine=MyISAM default charset=utf8;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'the manual that corresponds to your MySQL server version for the right syntax to' at line 1
+mysql> create table card(
+    -> id int primary key auto_increment,
+    -> name varchar(20) not null,
+    -> gender varchar(20) not null,
+    -> address varchar(20)
+    -> )engine=MyISAM default charset=utf8;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> insert into card values(14011,'蒋','男','大同'),(14022,'孟','女','运城'),(14033,'王','男','忻州');
+ERROR 1366 (HY000): Incorrect string value: '\xBD\xAF' for column 'name' at row 1
+mysql> set names gbk;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> insert into card values(14011,'蒋','男','大同'),(14022,'孟','女','运城'),(14033,'王','男','忻州');
+Query OK, 3 rows affected (0.01 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> create table student(
+    -> sno int primary key auto_increment,
+    -> name varchar(20) not null,
+    -> age int not null default 18,
+    -> class_id int not null,
+    -> id_number int not null
+    -> )engine=MyISAM default charset=utf8;
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> insert into card values(1001,'蒋',18,101,14011),(1002,'孟',19,102,14022),(1003,'王',17,103,14033);
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> insert into student values(1001,'蒋',18,101,14011),(1002,'孟',19,102,14022),(1003,'王',17,103,14033);
+Query OK, 3 rows affected (0.00 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> create table student_course(
+    -> sno primary key auto_increment,
+    -> course int not null
+    -> )engine=MyISAM default character=utf8;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'primary key auto_increment,
+course int not null
+)engine=MyISAM default character' at line 2
+mysql> create table student_course(
+    -> sno int primary key auto_increment,
+    -> course int not null
+    -> )engine=MyISAM default character=utf8;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '=utf8' at line 4
+mysql> create table student_course(
+    -> sno int primary key auto_increment,
+    -> course int not null
+    -> )engine=MyISAM default charset=utf8;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> insert into student_course values(1001,201),(1001,301),(1002,201),(1003,201);
+ERROR 1062 (23000): Duplicate entry '1001' for key 'PRIMARY'
+mysql> drop table student_course;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> create table student_course(
+    -> sno int not null,
+    -> course int not null
+    -> )engine=MyISAM default charset=utf8;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> )engine=MyISAM default charset=utf8;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')engine=MyISAM default charset=utf8' at line 1
+mysql> insert into student_course values(1001,201),(1001,301),(1002,201),(1003,201);
+Query OK, 4 rows affected (0.00 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> create table course(
+    -> course_id int primary key auto_increment,
+    -> name varchar
+    -> )engine=MyISAM default charset=utf8;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')engine=MyISAM default charset=utf8' at line 4
+mysql> create table course(
+    -> course_id int primary key auto_increment,
+    -> name varchar(20)
+    -> )engine=MyISAM default charset=utf8;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> insert into course values(201,'言情'),(301,'国学经典'),(401,'电影赏析');
+Query OK, 3 rows affected (0.00 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> create table class(
+    -> class_id int primary auto_increment,
+    -> name varchar(20)
+    -> )engine=MyISAM defsult key auto_utf8;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'auto_increment,
+name varchar(20)
+)engine=MyISAM defsult key auto_utf8' at line 2
+mysql> create table class(
+    -> class_id int primary auto_increment,
+    -> name varchar(20)
+    -> )engine=MyISAM default key auto_utf8;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'auto_increment,
+name varchar(20)
+)engine=MyISAM default key auto_utf8' at line 2
+mysql> create table class(
+    -> class_id int primary key auto_increment,
+    -> name varchar(20)
+    -> )engine=MyISAM default key auto_utf8;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'key auto_utf8' at line 4
+mysql> create table class(
+    -> class_id int primary key auto_increment,
+    -> name varchar(20)
+    -> )engine=MyISAM default charset=utf8;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> insert into class values(101,'三年级一班'),(102,'三年级二班'),(103,'三年级三班'；)
+    -> insert into class values(101,'三年级一班'),(102,'三年级二班'),(103,'三年级三班');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '；)
+insert into class values(101,'三年级一班'),(102,'三年级二班'),(10' at line 1
+mysql> insert into class values(101,'三年级一班'),(102,'三年级二班'),(103,'三年级三班');
+Query OK, 3 rows affected (0.00 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> show tables;
++------------------+
+| Tables_in_school |
++------------------+
+| card             |
+| class            |
+| course           |
+| student          |
+| student_course   |
++------------------+
+5 rows in set (0.00 sec)
+
+mysql> select *from card;
++-------+------+--------+---------+
+| id    | name | gender | address |
++-------+------+--------+---------+
+| 14011 | 蒋     | 男       | 大同       |
+| 14022 | 孟     | 女      | 运城       |
+| 14033 | 王     | 男       | 忻州        |
++-------+------+--------+---------+
+3 rows in set (0.01 sec)
+
+mysql> select name,addressfrom card;
+ERROR 1054 (42S22): Unknown column 'name' in 'field list'
+mysql> select name,adress from card;
+ERROR 1054 (42S22): Unknown column 'adress' in 'field list'
+mysql> select id,gender from card;
++-------+--------+
+| id    | gender |
++-------+--------+
+| 14011 | 男       |
+| 14022 | 女      |
+| 14033 | 男       |
++-------+--------+
+3 rows in set (0.00 sec)
+
+mysql> ifnull(address,太原);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ifnull(address,太原)' at line 1
+mysql> ifnull(address,'太原');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ifnull(address,'太原')' at line 1
+mysql> select ifnull(address,'太原')name from card;
++------+
+| name |
++------+
+| 大同    |
+| 运城    |
+| 忻州     |
++------+
+3 rows in set (0.01 sec)
+
+mysql> select ifnull(id,;)
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+    -> select *from card where id between 14011 and 14033;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')
+select *from card where id between 14011 and 14033' at line 1
+mysql> select *from card where id in(14011);
++-------+------+--------+---------+
+| id    | name | gender | address |
++-------+------+--------+---------+
+| 14011 | 蒋     | 男       | 大同       |
++-------+------+--------+---------+
+1 row in set (0.01 sec)
+
+mysql> select *from card where id like'%02%';
++-------+------+--------+---------+
+| id    | name | gender | address |
++-------+------+--------+---------+
+| 14022 | 孟     | 女      | 运城       |
++-------+------+--------+---------+
+1 row in set (0.00 sec)
+
+mysql> select *from card where id like('_4033');
++-------+------+--------+---------+
+| id    | name | gender | address |
++-------+------+--------+---------+
+| 14033 | 王     | 男       | 忻州        |
++-------+------+--------+---------+
+1 row in set (0.02 sec)
+
+mysql> select *from card order by id;
++-------+------+--------+---------+
+| id    | name | gender | address |
++-------+------+--------+---------+
+| 14011 | 蒋     | 男       | 大同       |
+| 14022 | 孟     | 女      | 运城       |
+| 14033 | 王     | 男       | 忻州        |
++-------+------+--------+---------+
+3 rows in set (0.01 sec)
+
+mysql> select *from course order by name;
++-----------+----------+
+| course_id | name     |
++-----------+----------+
+|       301 | 国学经典        |
+|       401 | 电影赏析        |
+|       201 | 言情         |
++-----------+----------+
+3 rows in set (0.01 sec)
+
+mysql> select *from course order by name desc;
++-----------+----------+
+| course_id | name     |
++-----------+----------+
+|       201 | 言情         |
+|       401 | 电影赏析        |
+|       301 | 国学经典        |
++-----------+----------+
+3 rows in set (0.00 sec)
+
+mysql> \t
